@@ -1,0 +1,4 @@
+{
+    "mongoDBConnectURI": "mongodb+srv://admin:admin@cluster0-xy94t.mongodb.net/letshelp?retryWrites=true&w=majority",
+    "jwtsecret":"secretkey"
+}
