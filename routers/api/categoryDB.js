@@ -56,10 +56,12 @@ router.post('/',[
         name : req.body.name,
         details: req.body.details
     });
-    let Categoty1 = await Categoty.findOne({email: req.body.email});
+    let Categoty1 = await Categoty.findOne({name: req.body.email});
     if(Categoty1){
         return res.status(400).json({error : [{msg:'Categoty already exist'}]});
     }
+    newCategoty.save();
+    res.send(newCategoty);
 });
 
 router.put('/:id',[

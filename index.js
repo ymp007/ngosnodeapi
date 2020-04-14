@@ -4,7 +4,7 @@ const ngoRouter = require('./routers/api/NgoDB');
 const categoryRouter = require('./routers/api/categoryDB');
 const loginRouter = require('./routers/api/loginRouter');
 const connectDB = require('./config/ConnectDB');
-
+const cors = require('cors');
 const app = express();
 
 
@@ -12,7 +12,7 @@ const app = express();
 connectDB();
 //set a middleware to parse data
 app.use(express.json());
-
+app.use(cors());
 app.use('/api/ngos',ngoRouter);
 app.use('/api/users',userRouter);
 app.use('/api/category',categoryRouter);

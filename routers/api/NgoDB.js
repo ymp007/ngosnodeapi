@@ -68,6 +68,7 @@ router.post('/',[
     }
 
     await newNgo.save();
+    req.send(newNgo);
 });
 
 router.put('/:id',[
