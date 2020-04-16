@@ -18,11 +18,11 @@ router.get('/', async (req,res) => {
     }
 });
 router.get('/:id', async (req,res) => {
-    const Ngo = await Ngo.findById(req.params.id);
-    if(!Ngo){
+    const ngoD = await Ngo.findById(req.params.id);
+    if(!ngoD){
        return res.status(404).send('not found');
     }
-        res.send(Ngo);
+        res.send(ngoD);
     
 });
 
