@@ -6,7 +6,7 @@ const ProductSchema = new mongoose.Schema({
 	userid:{
 		type: Schema.Types.ObjectId,
             ref: 'user'
-	}
+	},
     productName:String,
     details:String,
     category:{

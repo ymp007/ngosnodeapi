@@ -21,9 +21,9 @@ router.get('/:id', async (req,res) => {
     const Ngo = await Ngo.findById(req.params.id);
     if(!Ngo){
        return res.status(404).send('not found');
-    }else{
-        res.json(Ngo);
     }
+        res.send(Ngo);
+    
 });
 
 router.delete('/:id', async(req,res) => {

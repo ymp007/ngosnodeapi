@@ -44,9 +44,13 @@ router.delete('/:id', async(req,res) => {
 //access public
 
 router.post('/',[
-    check('name').isEmail(),
-    check('category').not().isEmpty(),
-    check('').isLength({min:6})
+    check('userid').isEmail(),
+    check('productname').not().isEmpty(),
+    check('details').isLength({min:6}),
+	check('category').not().isEmpty(),
+	check('NgoId').not().isEmpty(),
+	check('dateofDonation').not().isEmpty(),
+	check('quantity').not().isEmpty(),
 ],async (req,res)=>{
 
     const errors = validationResult(req);
@@ -54,9 +58,14 @@ router.post('/',[
       return res.status(422).json({ errors: errors.array() });
     }
     const newProduct = new Product({
-        email : req.body.email,
-        name : req.body.name,
-        password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(5))
+		userid:req.body.userid,
+		productname:req.body.productname,
+		details:req.body.details,
+		category:req.body.category,
+		NgoId:req.body.NgoId,
+		dateofDonation:req.body.dateofDonation,
+		quantity:req.body.quantity,
+		donated:req.body.donated
     });
     let product1 = await Product.findOne({email: req.body.email});
     if(product1){

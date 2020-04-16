@@ -19,22 +19,7 @@ const UserSchema = new mongoose.Schema({
     },
     pickUPInformation:{
         type:String
-    },
-    donatedProducts:[{
-    productname:String,
-    details:String,
-    category:{
-            type: Schema.Types.ObjectId,
-            ref: 'category'
-     },
-      NgoId:{
-        type: Schema.Types.ObjectId,
-        ref: 'ngo'
-      },
-      dateofDonation:Date,
-      quantity: Number,
-      donated:Boolean
-    }]
+    }
 });
 
 const User = mongoose.model('user',UserSchema);
