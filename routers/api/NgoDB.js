@@ -45,7 +45,9 @@ router.post('/',[
     check('email','Please enter valid email').isEmail(),
     check('name','enter valid name').not().isEmpty(),
     check('detail','enter valid detail').not().isEmpty(),
+	check('phone','enter valid phone').not().isEmpty(),
     check('link','enter valid link').not().isEmpty(),
+	check('address','enter valid address').not().isEmpty(),
     check('password','enter valid password').isLength({min:6})
 ],async (req,res)=>{
 
@@ -68,7 +70,7 @@ router.post('/',[
     }
 
     await newNgo.save();
-    req.send(newNgo);
+    res.send(newNgo);
 });
 
 router.put('/:id',[

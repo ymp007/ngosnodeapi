@@ -21,7 +21,7 @@ const UserSchema = new mongoose.Schema({
         type:String
     },
     donatedProducts:[{
-    name:String,
+    productname:String,
     details:String,
     category:{
             type: Schema.Types.ObjectId,
@@ -32,7 +32,7 @@ const UserSchema = new mongoose.Schema({
         ref: 'ngo'
       },
       dateofDonation:Date,
-      qunatity: Number,
+      quantity: Number,
       donated:Boolean
     }]
 });

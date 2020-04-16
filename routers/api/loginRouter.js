@@ -1,5 +1,6 @@
 const express = require('express');
 let User = require('../../models/User');
+let Ngo = require('../../models/Ngo');
 const { check, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -12,7 +13,7 @@ router.post('/user', async (req,res) => {
     try{
         const userData = await User.findOne({email:req.body.email});
         if(!userData){
-            res.status(500).send("can't find");
+            res.status(500).send("Sorry username/password is wrong");
         }else{
         //   console.log(userData[0].password); 
          if(bcrypt.compareSync(req.body.password,userData.password)){
@@ -30,13 +31,13 @@ router.post('/user', async (req,res) => {
          }  
         } 
     }catch(err){
-        res.status(500).send("Sorry username/password is wrong");
+        res.send("Sorry username/password is wrong");
     }
 });
 
 router.post('/ngo', async (req,res) => {
     try{
-        const NgoData = await User.findOne({email:req.body.email});
+        const NgoData = await Ngo.findOne({email:req.body.email});
         if(!NgoData){
             res.status(500).send("can't find");
         }else{

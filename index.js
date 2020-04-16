@@ -18,5 +18,6 @@ app.use('/api/users',userRouter);
 app.use('/api/category',categoryRouter);
 app.use('/login',loginRouter);
 
+const PORT = process.env.PORT || 5000;
 
-app.listen(5000);
+app.listen(PORT);

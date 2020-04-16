@@ -81,6 +81,26 @@ router.post('/',[
     });
 });
 
+router.put('/donate/:id',[
+    check('user_id').not().isEmpty(),
+    check('productname').not().isEmpty(),
+    check('details').not().isEmpty(),
+    check('NgoId').not().isEmpty(),
+	check('category').not().isEmpty(),
+	check('dateofDonation').not().isEmpty(),
+	check('quantity').not().isEmpty()
+],async (req,res)=>{
+
+    //const errors = validationResult(req);
+   // if (!errors.isEmpty()) {
+    //  return res.status(422).json({ errors: errors.array() });
+    //}
+	 const UserU = await User.findById(req.params.id);
+    UserU.donatedProducts.push(req.body);
+	await UserU.save();
+	res.send("Product Added to your List");
+});
+
 router.put('/:id',[
     check('email','Please enter valid email').isEmail(),
     check('name').not().isEmpty(),
