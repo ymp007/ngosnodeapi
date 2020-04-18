@@ -15,14 +15,14 @@
 4. Routes - User,
 
 
-#Aditya Tuli 
+# Aditya Tuli 
 1. Models - Ngos,
 2. Server side validation of Ngos,
 3. Routes Redesign - user,Ngos
 
 
 # Heroku Deployment
-https://gladiators-digital-diary.herokuapp.com/
+https://ngonodeapi.herokuapp.com/api/ngos
 
 # Our Initial Work on different Repo
 
