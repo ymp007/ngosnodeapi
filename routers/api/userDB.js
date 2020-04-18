@@ -127,14 +127,14 @@ router.put('/:id',[
            res.send(userlist);
 });
 
-router.put('/addProduct/:id',async (req,res)=>{
+router.put('/deleteProduct/:id',async (req,res)=>{
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
     }
 
-    const UserU = await User.findById(req.params.id);
-        UserU.donatedProducts.push(req.body.donatedProduct);
+    //const UserU = await User.findById(req.params.id);
+		User.update( {_id: req.params.id}, { $pull: {: [req.params.deleteUid] } } )
         
         await UserU.save();
         const userlist = await User.find();

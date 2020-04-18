@@ -54,12 +54,12 @@ router.post('/',[
 ],async (req,res)=>{
 
     const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(422).json({ errors: errors.array() });
-    }
+    //if (!errors.isEmpty()) {
+      //return res.status(422).json({ errors: errors.array() });
+    //}
     const newProduct = new Product({
 		userid:req.body.userid,
-		productname:req.body.productname,
+		productName:req.body.productname,
 		details:req.body.details,
 		category:req.body.category,
 		NgoId:req.body.NgoId,
@@ -67,32 +67,31 @@ router.post('/',[
 		quantity:req.body.quantity,
 		donated:req.body.donated
     });
-    let product1 = await Product.findOne({email: req.body.email});
-    if(product1){
-        return res.status(400).json({error : [{msg:'product already exist'}]});
-    }
 
     await newProduct.save();
+	res.send(newProduct);
 });
 
-router.put('/:id',[
-    check('email','Please enter valid email').isEmail(),
-    check('name').not().isEmpty(),
-    check('password','please enter password').isLength({min:6})
+router.put('/',[
+    check('productname').not().isEmpty(),
+    check('details').isLength({min:6}),
+	check('category').not().isEmpty(),
+	check('dateofDonation').not().isEmpty(),
+	check('quantity').not().isEmpty(),
 ],async (req,res)=>{
+
     const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(422).json({ errors: errors.array() });
-    }
-
-    const ProductU = await Product.findById(req.params.id);
-
-        ProductU.email = req.body.email,
-        ProductU.name = req.body.name,
-        ProductU.password= bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(5))
-        await ProductU.save();
-        const productlist = await Product.find();
-           res.send(productlist);
+    //if (!errors.isEmpty()) {
+      //return res.status(422).json({ errors: errors.array() });
+    //}
+    const nProduct = Product.findById(req.params.id);
+		nProduct.productName=req.body.productname,
+		nProduct.details=req.body.details,
+		nProduct.category=req.body.category,
+		nProduct.dateofDonation=req.body.dateofDonation,
+		nProduct.quantity=req.body.quantity,
+    await nProduct.save();
+	res.send(nProduct);
 });
 
 module.exports = router;

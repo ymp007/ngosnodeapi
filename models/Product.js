@@ -18,7 +18,7 @@ const ProductSchema = new mongoose.Schema({
         ref: 'ngo'
       },
       dateofDonation:Date,
-      qunatity: Number,
+      quantity: Number,
       donated:Boolean
 });
 
